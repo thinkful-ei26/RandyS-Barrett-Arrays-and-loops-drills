@@ -28,3 +28,16 @@ function min(numbers) {
 }
 
 console.log(min(numbers));
+
+
+function average(array) {
+    let sum = 0;
+    let i = 0;
+    while (i<array.length) {
+        sum+=array[i];
+        i++;
+    }
+    return sum / array.length;
+}
+
+console.log(average(numbers))
