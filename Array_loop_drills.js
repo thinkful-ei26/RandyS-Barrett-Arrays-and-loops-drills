@@ -152,23 +152,14 @@ rocksWarning('Centinela Ave and Olympic Blvd');
 
 
 
-// function turtleMove(arr) {
-//     let newArray = []
-//     let mappedArray =[]
-//     for (let i = 0; i < arr.length; i++) {
-//        newArray.push(arr[i].filter(move => move >= 0))
-//     }
-//     // let mappedArray = newArray.map(x => x[0] + x[1]);
-//     //     return mappedArray
-//     console.log(newArray)
-//     for (let i=0; i<newArray.length; i++) {
-//         mappedArray.push(newArray[i].map(step => step[i] + step[i]))
-//     }   
-//     console.log(mappedArray)
-// }
+function turtleMove(arr) {
+    return arr.filter(move => move[0] > -1 && move[1] > -1)
+    .map(move => move[0] + move[1])
+    .forEach(move => console.log(move));
+}
 
-// let turtleArr = [[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]];
-// console.log(turtleMove(turtleArr));
+let turtleArr = [[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]];
+console.log(turtleMove(turtleArr));
 
 // A turtle's movements can be represented by an array which looks like this: [3, 4]. 
 // The first item in the array represents the number of steps the turtle takes forwards. 
@@ -181,21 +172,29 @@ rocksWarning('Centinela Ave and Olympic Blvd');
 // total with each movement (i.e. the first and second number added together).
 // Use the forEach method to log out how many steps the turtle took in each case.
 
-Use the reduce function to iterate through an array of words 
-and construct a decoded sentence (string) based on the following criteria:
-If the array element is exactly three characters in length, 
-add a space character to your accumulator
-Otherwise, capitalize the LAST character of the array element 
-and add it to your accumulator
-Your input is 'noggin oreo the moon time tele steed his tent
- apollo her lives though shoo tofu budapest'
-You will need to convert the input to an array 
-before using .reduce()
-HINT: When you invoke reduce() you will need to set the 
-initialValue parameter to an empty string so that future iterations
- can concatenate more string characters
+    // Use the reduce function to iterate through an array of words 
+    // and construct a decoded sentence (string) based on the following criteria:
+    // If the array element is exactly three characters in length, 
+    // add a space character to your accumulator
+    // Otherwise, capitalize the LAST character of the array element 
+    // and add it to your accumulator
+    // Your input is 'noggin oreo the moon time tele steed his tent
+    // apollo her lives though shoo tofu budapest'
+    // You will need to convert the input to an array 
+    // before using .reduce()
+    // HINT: When you invoke reduce() you will need to set the 
+    // initialValue parameter to an empty string so that future iterations
+    // can concatenate more string characters
 
- function reducer(input) {
-    let array = input.split('')
- }
+let input = 'noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest';    
+const output = input.split(' ').reduce((acc, val) => {
+    if (val.length === 3) {
+        return acc + ' ';
+    }
+    else {
+        return acc + val[val.length - 1].toUpperCase();
+    }
+}, '');
 
+
+console.log(output);
